@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EDEN — Мультикультурная кухня | Алматы</title>
+  <meta name="description" content="Кафе EDEN в Алматы — мультикультурная кухня: казахская, узбекская, тайская, итальянская. 100% Halal. 600 мест, 5 VIP залов, бронирование онлайн.">
+  <meta name="keywords" content="кафе Алматы, EDEN, мультикультурная кухня, халяль, бронирование, ресторан, VIP зал">
+  <meta name="author" content="EDEN Cafe Almaty">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="EDEN — Мультикультурная кухня | Алматы">
+  <meta property="og:description" content="Кухня мира в стенах одного места. 100% Halal, 600 мест, 5 VIP залов.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_KZ">
+  <meta property="og:site_name" content="EDEN Cafe">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231A1610'/><text x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='18' fill='%23E8D5A8'>E</text></svg>">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "EDEN Cafe",
+    "description": "Мультикультурная кухня: казахская, узбекская, тайская, итальянская. 100% Halal.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Алматы", "streetAddress": "мкр. Достык, ул. Поль Гурдэ, 17", "addressCountry": "KZ" },
+    "telephone": ["+77079457887", "+77788294714"],
+    "url": "https://eden-almaty.kz",
+    "servesCuisine": ["Kazakh", "Uzbek", "Thai", "Italian"],
+    "acceptsReservations": "True",
+    "priceRange": "$$",
+    "openingHours": ["Mo-Th,Su 09:00-23:00", "Fr-Sa 09:00-00:00"]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav" aria-label="Основная навигация">
+    <span class="nav-logo" onclick="showPage('home')" role="button" tabindex="0" aria-label="EDEN — Главная">EDEN</span>
+    <ul class="nav-links">
+      <li><a onclick="showPage('about')" data-page="about" role="button" tabindex="0">О нас</a></li>
+      <li><a onclick="showPage('menu')" data-page="menu" role="button" tabindex="0">Меню</a></li>
+      <li><a onclick="showPage('booking')" data-page="booking" role="button" tabindex="0">Бронирование</a></li>
+      <li><a onclick="showPage('gallery')" data-page="gallery" role="button" tabindex="0">Галерея</a></li>
+      <li><a onclick="showPage('events')" data-page="events" role="button" tabindex="0">Мероприятия</a></li>
+      <li><a onclick="showPage('map')" data-page="map" role="button" tabindex="0">Карта</a></li>
+    </ul>
+    <span class="nav-cta" onclick="showPage('booking')" role="button" tabindex="0">Забронировать</span>
+    <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Открыть меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Мобильное меню">
+    <div class="mm-header">
+      <span class="mm-logo">EDEN</span>
+      <button class="mm-close" onclick="toggleMobileMenu()" aria-label="Закрыть меню">
+        <span></span><span></span>
+      </button>
+    </div>
+    <div class="mm-body">
+      <span class="mm-link" onclick="showPage('home');toggleMobileMenu()" role="button" tabindex="0"><span class="mm-num">01</span>Главная</span>
+      <span class="mm-link" onclick="showPage('about');toggleMobileMenu()" role="button" tabindex="0"><span class="mm-num">02</span>О нас</span>
+      <span class="mm-link" onclick="showPage('menu');toggleMobileMenu()" role="button" tabindex="0"><span class="mm-num">03</span>Меню</span>
+      <span class="mm-link" onclick="showPage('booking');toggleMobileMenu()" role="button" tabindex="0"><span class="mm-num">04</span>Бронирование</span>
+      <span class="mm-link" onclick="showPage('gallery');toggleMobileMenu()" role="button" tabindex="0"><span class="mm-num">05</span>Галерея</span>
+      <span class="mm-link" onclick="showPage('events');toggleMobileMenu()" role="button" tabindex="0"><span class="mm-num">06</span>Мероприятия</span>
+      <span class="mm-link" onclick="showPage('map');toggleMobileMenu()" role="button" tabindex="0"><span class="mm-num">07</span>Карта</span>
+    </div>
+    <div class="mm-footer">
+      <a href="tel:+77079457887" class="mm-phone">+7 (707) 945-78-87</a>
+      <a href="https://instagram.com/eden.almaty" target="_blank" rel="noopener" class="mm-insta">@eden.almaty</a>
+    </div>
+  </div>
+
+  <!-- BACK TO TOP -->
+  <button id="backToTop" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Наверх">&uarr;</button>
+
+  <!-- ========== HOME ========== -->
+  <main id="page-home" class="page active">
+    <section class="hero" aria-label="Главный баннер">
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-inner">
+        <div class="hero-eye">Мультикультурная кухня &middot; 100% Halal &middot; Алматы</div>
+        <h1 class="hero-title"><em>Eden</em></h1>
+        <p class="hero-sub">Кухня мира в стенах одного места</p>
+        <div class="hero-btns">
+          <span class="btn btn-gold" onclick="showPage('booking')" role="button" tabindex="0">Забронировать стол</span>
+          <span class="btn btn-outline btn-outline-light" onclick="showPage('menu')" role="button" tabindex="0">Смотреть меню</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="hours-bar" aria-label="Часы работы">
+      <div class="hours-inner">
+        <div class="hi"><div class="hi-day">Пн&mdash;Чт, Вс</div><div class="hi-time">09:00&mdash;23:00</div></div>
+        <div class="h-sep"></div>
+        <div class="hi"><div class="hi-day">Пт&mdash;Сб</div><div class="hi-time">09:00&mdash;00:00</div></div>
+        <div class="h-sep"></div>
+        <div class="hi"><div class="hi-day">Бронь</div><div class="hi-time"><a href="tel:+77079457887">+7 (707) 945-78-87</a></div></div>
+        <div class="h-sep"></div>
+        <div class="hi"><div class="hi-day">Адрес</div><div class="hi-time">Поль Гурдэ, 17</div></div>
+      </div>
+    </section>
+
+    <section class="home-stats" aria-label="Статистика">
+      <div class="stats-grid">
+        <div class="stat-box fi d1"><div class="stat-num">600</div><div class="stat-lbl">Мест</div></div>
+        <div class="stat-box fi d2"><div class="stat-num">5</div><div class="stat-lbl">VIP залов</div></div>
+        <div class="stat-box fi d3"><div class="stat-num">2</div><div class="stat-lbl">Этажа</div></div>
+        <div class="stat-box fi d4"><div class="stat-num">100%</div><div class="stat-lbl">Halal</div></div>
+      </div>
+    </section>
+
+    <!-- POPULAR DISHES -->
+    <section class="popular-section" aria-label="Популярные блюда">
+      <div class="popular-inner">
+        <div class="s-eye fi">Хиты меню</div>
+        <h2 class="s-title fi">Популярные <em>блюда</em></h2>
+        <div class="gold-line fi"></div>
+        <div class="popular-carousel-wrap">
+          <button class="pop-arrow pop-arrow-left" onclick="scrollPopular(-1)" aria-label="Назад">&lsaquo;</button>
+          <div class="popular-carousel" id="popularCarousel"></div>
+          <button class="pop-arrow pop-arrow-right" onclick="scrollPopular(1)" aria-label="Вперёд">&rsaquo;</button>
+        </div>
+        <div class="popular-dots" id="popularDots"></div>
+        <div style="text-align:center;margin-top:24px" class="fi">
+          <span class="btn btn-outline" onclick="showPage('menu')">Смотреть всё меню &rarr;</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-preview" aria-label="Превью">
+      <div class="preview-grid">
+        <article class="preview-card fi d1">
+          <div class="pc-img"><img id="pcImg1" alt="Зал Eden с прудом"></div>
+          <div class="pc-body">
+            <h3 class="pc-title">Наши залы</h3>
+            <p class="pc-desc">Два этажа восточного интерьера, пруд с золотыми рыбками и свисающие фонари.</p>
+            <button class="pc-link" onclick="showPage('gallery')">Смотреть галерею &rarr;</button>
+          </div>
+        </article>
+        <article class="preview-card fi d2">
+          <div class="pc-img"><img id="pcImg2" alt="Терраса Eden"></div>
+          <div class="pc-body">
+            <h3 class="pc-title">Меню мира</h3>
+            <p class="pc-desc">Казахская, узбекская, тайская, итальянская кухня. Каждый найдёт блюдо по душе.</p>
+            <button class="pc-link" onclick="showPage('menu')">Смотреть меню &rarr;</button>
+          </div>
+        </article>
+        <article class="preview-card fi d3">
+          <div class="pc-img"><img id="pcImg3" alt="Фасад ресторана Eden"></div>
+          <div class="pc-body">
+            <h3 class="pc-title">VIP мероприятия</h3>
+            <p class="pc-desc">5 приватных залов для дней рождений, корпоративов и банкетов до 600 гостей.</p>
+            <button class="pc-link" onclick="showPage('events')">Узнать подробности &rarr;</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="reviews-section" aria-label="Отзывы гостей">
+      <div class="reviews-inner">
+        <div class="s-eye fi">Отзывы гостей</div>
+        <h2 class="s-title fi" style="margin-bottom:0">Нас <em>любят</em></h2>
+        <div class="reviews-grid" id="reviewsGrid">
+          <!-- Reviews loaded dynamically from API -->
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div>
+            <div class="footer-logo">EDEN</div>
+            <div class="footer-tagline">Мультикультурная кухня</div>
+            <span class="halal">&#10022; 100% Halal</span>
+          </div>
+          <div class="fcol">
+            <h4>Контакты</h4>
+            <a href="tel:+77079457887">+7 (707) 945-78-87</a>
+            <a href="tel:+77788294714">+7 (778) 829-47-14</a>
+            <a href="https://instagram.com/eden.almaty" target="_blank" rel="noopener">@eden.almaty</a>
+            <p>мкр. Достык, ул. Поль Гурдэ, 17</p>
+          </div>
+          <div class="fcol">
+            <h4>Время работы</h4>
+            <p>Пн&ndash;Чт, Вс: 09:00 &mdash; 23:00</p>
+            <p>Пт&ndash;Сб: 09:00 &mdash; 00:00</p>
+            <h4 style="margin-top:14px">Навигация</h4>
+            <a onclick="showPage('menu')">Меню</a>
+            <a onclick="showPage('booking')">Бронирование</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; <span id="copyrightYear"></span> Кафе Eden, Алматы</span>
+          <a href="https://instagram.com/eden.almaty" target="_blank" rel="noopener" style="color:#E8D5A8">@eden.almaty</a>
+          <button onclick="openAdmin()" style="background:none;border:1px solid rgba(232,213,168,.2);color:#8a7f6a;padding:4px 10px;border-radius:8px;font-size:9px;cursor:pointer;letter-spacing:1px;text-transform:uppercase">Админ</button>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ========== ABOUT ========== -->
+  <div id="page-about" class="page">
+    <section class="about-hero">
+      <div class="about-hero-grid">
+        <div class="fi">
+          <div class="s-eye">О ресторане</div>
+          <h2 class="s-title">Давайте<br><em>знакомиться</em></h2>
+          <div class="gold-line"></div>
+          <div class="fact-item"><div class="fact-icon" aria-hidden="true">&#128525;</div><div class="fact-text"><strong>Семейный концепт</strong> &mdash; каждый найдёт блюдо по душе</div></div>
+          <div class="fact-item"><div class="fact-icon" aria-hidden="true">&#127963;</div><div class="fact-text"><strong>600 посадочных мест</strong> &mdash; строили сразу большим</div></div>
+          <div class="fact-item"><div class="fact-icon" aria-hidden="true">&#10024;</div><div class="fact-text"><strong>Душа в интерьере</strong> &mdash; атмосфера и уют в каждом зале</div></div>
+          <div class="fact-item"><div class="fact-icon" aria-hidden="true">&#128032;</div><div class="fact-text"><strong>Золотые рыбки</strong> &mdash; загадайте желание, оно сбудется!</div></div>
+          <div class="fact-item"><div class="fact-icon" aria-hidden="true">&#128666;</div><div class="fact-text"><strong>Доставка и выездное обслуживание</strong> для вашего удобства</div></div>
+          <div class="fact-item"><div class="fact-icon" aria-hidden="true">&#10022;</div><div class="fact-text"><strong>100% Halal</strong> &mdash; все блюда соответствуют стандартам халяль</div></div>
+        </div>
+        <div class="fi d2">
+          <div class="about-photos">
+            <div class="aph" id="aph1"><img alt="Пруд с золотыми рыбками"><div class="aph-label">Пруд с рыбками</div></div>
+            <div class="aph" id="aph2"><img alt="Зал ресторана"><div class="aph-label">Зал &middot; 2 этажа</div></div>
+            <div class="aph" id="aph3"><img alt="Летняя терраса"><div class="aph-label">Терраса</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="about-story">
+      <div class="fi">
+        <div class="s-eye">Наша история</div>
+        <h3 class="s-title" style="font-size:clamp(26px,3vw,38px)">Место, куда хочется <em>возвращаться</em></h3>
+        <div class="gold-line"></div>
+        <p>Eden &mdash; это пространство, где каждое блюдо рассказывает историю. Вкусная еда, уютная атмосфера и приятные встречи &mdash; всё это ждёт вас каждый день.</p>
+        <p>Готовим с любовью, используем качественные продукты и создаём место, куда хочется возвращаться снова и снова.</p>
+        <p>Мы объединили лучшее из мировой кухни: <strong style="color:var(--gold-d)">казахскую, узбекскую, тайскую, итальянскую</strong>. Приходите за хорошим настроением. <a href="https://instagram.com/eden.almaty" target="_blank" rel="noopener" style="color:var(--gold-d)">@eden.almaty</a></p>
+        <div class="about-stats-row">
+          <div class="as-box fi d1"><div class="as-num">600</div><div class="as-lbl">Мест</div></div>
+          <div class="as-box fi d2"><div class="as-num">5</div><div class="as-lbl">VIP</div></div>
+          <div class="as-box fi d3"><div class="as-num">2</div><div class="as-lbl">Этажа</div></div>
+          <div class="as-box fi d4"><div class="as-num">26K</div><div class="as-lbl">Подписч.</div></div>
+        </div>
+      </div>
+      <div class="fi d2">
+        <div class="story-quote">
+          <div class="s-eye">Отзыв</div>
+          <blockquote>&laquo;Как всегда всё очень вкусно и много! Обстановка уютная. Рекомендую &mdash; не пожалеете.&raquo;</blockquote>
+          <div class="quote-author">
+            <div class="rv-avatar" style="background:#5A8AB8;" aria-hidden="true">S</div>
+            <div><div class="rv-name">Simpatikus</div><div class="rv-date">97 отзывов &middot; 2GIS</div></div>
+            <div class="rv-stars" style="margin-left:auto" aria-label="5 из 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+        <div class="story-quote">
+          <div class="s-eye">Ещё отзыв</div>
+          <blockquote>&laquo;Здесь очень вкусно, хорошая атмосфера, вкусная кухня, шашлыки супер!&raquo;</blockquote>
+          <div class="quote-author">
+            <div class="rv-avatar" style="background:#7AAB6A;" aria-hidden="true">A</div>
+            <div><div class="rv-name">Акмарал Боранова</div><div class="rv-date">подтверждённый &middot; 2GIS</div></div>
+            <div class="rv-stars" style="margin-left:auto" aria-label="5 из 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer><div class="footer-inner"><div class="footer-bottom"><span>&copy; <span class="copyright-year"></span> Eden</span></div></div></footer>
+  </div>
+
+  <!-- ========== MENU ========== -->
+  <div id="page-menu" class="page">
+    <section class="menu-header">
+      <div class="s-eye">Наше меню</div>
+      <h2 class="s-title">Кухня <em>мира</em></h2>
+      <div class="gold-line" style="margin:18px auto 0"></div>
+    </section>
+    <section class="menu-body">
+      <div class="menu-search">
+        <input type="search" id="menuSearch" placeholder="Поиск по блюду..." aria-label="Поиск блюда в меню">
+      </div>
+      <div class="menu-cats" role="tablist" aria-label="Категории меню">
+        <button class="mcat on" onclick="filterMenu('all',this)" role="tab" aria-selected="true">Всё меню</button>
+        <button class="mcat" onclick="filterMenu('salad',this)" role="tab" aria-selected="false">Салаты</button>
+        <button class="mcat" onclick="filterMenu('zakuski',this)" role="tab" aria-selected="false">Закуски</button>
+        <button class="mcat" onclick="filterMenu('main',this)" role="tab" aria-selected="false">Горячее</button>
+        <button class="mcat" onclick="filterMenu('soup',this)" role="tab" aria-selected="false">Супы</button>
+        <button class="mcat" onclick="filterMenu('dessert',this)" role="tab" aria-selected="false">Десерты</button>
+        <button class="mcat" onclick="filterMenu('drink',this)" role="tab" aria-selected="false">Напитки</button>
+      </div>
+      <div class="menu-sort">
+        <button class="sort-btn on" onclick="sortMenu('default',this)">По умолчанию</button>
+        <button class="sort-btn" onclick="sortMenu('price-asc',this)">Цена &uarr;</button>
+        <button class="sort-btn" onclick="sortMenu('price-desc',this)">Цена &darr;</button>
+        <button class="sort-btn" onclick="sortMenu('name',this)">А&mdash;Я</button>
+      </div>
+      <div class="menu-grid" id="menuGrid"></div>
+      <div class="menu-empty" id="menuEmpty" style="display:none">
+        <div style="font-size:48px;margin-bottom:12px">&#128269;</div>
+        <p>Ничего не найдено. Попробуйте другой запрос.</p>
+      </div>
+    </section>
+    <footer><div class="footer-inner"><div class="footer-bottom"><span>&copy; <span class="copyright-year"></span> Eden</span></div></div></footer>
+  </div>
+
+  <!-- MENU MODAL -->
+  <div class="menu-modal-overlay" id="menuModal" onclick="if(event.target===this)closeMenuModal()" role="dialog" aria-modal="true" aria-label="Детали блюда">
+    <div class="menu-modal">
+      <div class="modal-grid">
+        <div class="modal-img" id="modalImg"><button class="modal-close" onclick="closeMenuModal()" aria-label="Закрыть">&times;</button></div>
+        <div class="modal-body">
+          <div class="modal-cat" id="modalCat"></div>
+          <h3 class="modal-name" id="modalName"></h3>
+          <div class="modal-price" id="modalPrice"></div>
+          <p class="modal-desc" id="modalDesc"></p>
+          <div class="modal-qty">
+            <label for="modalQtyInput">Количество:</label>
+            <div class="qty-controls">
+              <button onclick="changeModalQty(-1)" aria-label="Уменьшить">&minus;</button>
+              <input type="number" id="modalQtyInput" value="1" min="1" max="20" readonly>
+              <button onclick="changeModalQty(1)" aria-label="Увеличить">+</button>
+            </div>
+          </div>
+          <div class="modal-cta">
+            <span class="btn btn-gold" style="width:100%;text-align:center" onclick="addToCartFromModal()">Добавить в корзину</span>
+            <span class="btn btn-outline" style="width:100%;text-align:center;margin-top:8px" onclick="closeMenuModal();showPage('booking')">Забронировать стол</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <aside class="cart-sidebar" id="cartSidebar" aria-label="Корзина заказов">
+    <div class="cart-header">
+      <h3>Ваш заказ</h3>
+      <button onclick="toggleCart()" aria-label="Закрыть корзину">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty" id="cartEmpty">
+        <div style="font-size:40px;margin-bottom:8px">&#128722;</div>
+        <p>Корзина пуста</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        <span>Итого:</span>
+        <span id="cartTotal">0 тг</span>
+      </div>
+      <div class="cart-order-type">
+        <label><input type="radio" name="orderType" value="here" checked> В зале</label>
+        <label><input type="radio" name="orderType" value="takeaway"> С собой</label>
+      </div>
+      <button class="btn btn-gold" style="width:100%;text-align:center" onclick="submitOrder()">Оформить заказ</button>
+      <button class="btn btn-outline" style="width:100%;text-align:center;margin-top:6px" onclick="clearCart()">Очистить</button>
+    </div>
+  </aside>
+
+  <!-- CART BUTTON (floating) -->
+  <button id="cartBtn" class="cart-float-btn" onclick="toggleCart()" style="display:none" aria-label="Открыть корзину">
+    &#128722; <span id="cartCount">0</span>
+  </button>
+
+  <!-- ORDER SUCCESS MODAL -->
+  <div class="order-modal-overlay" id="orderModal" onclick="if(event.target===this)this.style.display='none'" role="dialog" aria-modal="true">
+    <div class="order-modal">
+      <div class="order-modal-icon">&#10004;</div>
+      <h3>Заказ оформлен!</h3>
+      <p>Номер: <strong id="orderNum" style="color:var(--gold-d);font-size:18px"></strong></p>
+      <p id="orderTypeLabel" style="margin-top:4px"></p>
+      <div class="order-next-steps">
+        <div class="order-step"><span class="order-step-num">1</span><span>Ваш заказ принят в обработку</span></div>
+        <div class="order-step"><span class="order-step-num">2</span><span>Повар начал готовить ваш заказ</span></div>
+        <div class="order-step"><span class="order-step-num">3</span><span id="orderStep3">Ожидайте в зале или заберите на выносе</span></div>
+      </div>
+      <p style="color:var(--muted);font-size:12px;margin-top:12px">При вопросах звоните: <a href="tel:+77079457887" style="color:var(--gold-d)">+7 (707) 945-78-87</a></p>
+      <button class="btn btn-gold" onclick="document.getElementById('orderModal').style.display='none'" style="margin-top:16px">Отлично</button>
+    </div>
+  </div>
+
+  <!-- ========== BOOKING ========== -->
+  <div id="page-booking" class="page">
+    <section class="booking-header">
+      <div class="s-eye">Онлайн бронирование</div>
+      <h2 class="s-title">Выберите <em>стол</em></h2>
+      <div class="gold-line" style="margin:18px auto 0"></div>
+    </section>
+    <section class="booking-body">
+      <div class="booking-layout">
+        <div class="b-side">
+          <h3>Контакты</h3>
+          <ul class="clist">
+            <li><span class="ico" aria-hidden="true">&#128222;</span><a href="tel:+77079457887">+7 (707) 945-78-87</a></li>
+            <li><span class="ico" aria-hidden="true">&#128222;</span><a href="tel:+77788294714">+7 (778) 829-47-14</a></li>
+            <li><span class="ico" aria-hidden="true">&#128205;</span><span>мкр. Достык, ул. Поль Гурдэ, 17</span></li>
+            <li><span class="ico" aria-hidden="true">&#128336;</span><span>Пн&ndash;Чт, Вс: 09:00&ndash;23:00<br>Пт&ndash;Сб: 09:00&ndash;00:00</span></li>
+            <li><span class="ico" aria-hidden="true">&#128248;</span><a href="https://instagram.com/eden.almaty" target="_blank" rel="noopener">@eden.almaty</a></li>
+          </ul>
+          <div class="admin-contacts-social">
+            <a href="https://wa.me/77079457887?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%BB" target="_blank" rel="noopener" class="social-btn whatsapp-btn">&#128172; WhatsApp</a>
+            <a href="https://t.me/+77079457887" target="_blank" rel="noopener" class="social-btn telegram-btn">&#9993; Telegram</a>
+          </div>
+          <div class="cancel-wrap">
+            <h4>Отменить бронь</h4>
+            <div class="cancel-row">
+              <input type="text" id="cancelInput" placeholder="EDN-XXXX или +7..." aria-label="Номер брони для отмены">
+              <button class="cancel-btn" onclick="cancelBooking()">Отменить</button>
+            </div>
+            <div id="cancelMsg" role="status"></div>
+          </div>
+          <div class="my-bookings" id="myBookings" style="display:none">
+            <h4>Ваши бронирования</h4>
+            <div id="myBookingsList"></div>
+          </div>
+        </div>
+        <div class="plan-wrap">
+          <div class="plan-tabs" role="tablist">
+            <button class="ptab on" onclick="switchFloor(1,this)" role="tab" aria-selected="true">Зал 1</button>
+            <button class="ptab" onclick="switchFloor(2,this)" role="tab" aria-selected="false">Зал 2</button>
+            <button class="ptab" onclick="switchFloor(3,this)" role="tab" aria-selected="false">VIP</button>
+          </div>
+          <div class="plan-legend">
+            <div class="pleg"><div class="plegdot" style="background:rgba(45,122,79,.2);border:1px solid #2D7A4F"></div>Свободно</div>
+            <div class="pleg"><div class="plegdot" style="background:rgba(163,48,48,.18);border:1px solid #A33030"></div>Занято</div>
+            <div class="pleg"><div class="plegdot" style="background:rgba(184,147,90,.18);border:2px solid var(--gold-d)"></div>Выбрано</div>
+          </div>
+          <div class="plan-canvas-wrap">
+            <canvas id="planC" width="700" height="420"></canvas>
+          </div>
+          <div class="plan-form">
+            <div class="pf-sel" id="pSel" role="status">&larr; Нажмите на свободный стол на плане</div>
+            <div class="pf-row">
+              <div class="fg"><label for="bDate">Дата</label><input type="date" id="bDate"></div>
+              <div class="fg"><label for="bTime">Время</label><select id="bTime">
+                <option>09:00</option><option>10:00</option><option>11:00</option><option>12:00</option>
+                <option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option>
+                <option>17:00</option><option>18:00</option><option selected>19:00</option><option>20:00</option>
+                <option>21:00</option><option>22:00</option>
+              </select></div>
+            </div>
+            <div class="pf-row">
+              <div class="fg"><label for="bGuests">Гостей</label><select id="bGuests">
+                <option>1</option><option>2</option><option selected>3</option><option>4</option>
+                <option>5</option><option>6</option><option>7</option><option>8</option>
+                <option>9</option><option>10+</option>
+              </select></div>
+              <div class="fg"><label for="bName">Имя *</label><input type="text" id="bName" placeholder="Ваше имя" required></div>
+            </div>
+            <div class="fg"><label for="bPhone">Телефон *</label><input type="tel" id="bPhone" placeholder="+7 (___) ___-__-__" required></div>
+            <div class="fg"><label for="bWish">Пожелания</label><textarea id="bWish" placeholder="Место у окна, день рождения..."></textarea></div>
+            <button class="book-btn" id="bookBtn" onclick="submitBooking()">ЗАБРОНИРОВАТЬ СТОЛ</button>
+            <div class="book-ok" id="bookOk">
+              <div class="ck">&#10004;</div>
+              <p>Бронь принята! Номер: <strong id="bookNum" style="color:var(--gold-d)"></strong><br>Мы перезвоним для подтверждения.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer><div class="footer-inner"><div class="footer-bottom"><span>&copy; <span class="copyright-year"></span> Eden</span></div></div></footer>
+  </div>
+
+  <!-- ========== MAP ========== -->
+  <div id="page-map" class="page">
+    <div class="map-wrap">
+      <div class="map-card">
+        <div class="map-logo">EDEN</div>
+        <ul>
+          <li>&#128205; мкр. Достык, ул. Поль Гурдэ, 17</li>
+          <li>&#128222; <a href="tel:+77079457887">+7 (707) 945-78-87</a></li>
+          <li>&#128222; <a href="tel:+77788294714">+7 (778) 829-47-14</a></li>
+          <li>&#128336; Пн&ndash;Чт,Вс 09:00&ndash;23:00<br>Пт&ndash;Сб 09:00&ndash;00:00</li>
+          <li>&#128248; <a href="https://instagram.com/eden.almaty" target="_blank" rel="noopener">@eden.almaty</a></li>
+        </ul>
+      </div>
+      <!-- Yandex Maps (works in KZ) with Google Maps fallback -->
+      <div id="yandexMap" class="yandex-map"></div>
+      <iframe id="mapFrame" src="about:blank" style="display:none" allowfullscreen="" loading="lazy" title="Карта проезда"></iframe>
+    </div>
+  </div>
+
+  <!-- ========== GALLERY ========== -->
+  <div id="page-gallery" class="page">
+    <section class="gal-header">
+      <div class="s-eye">Атмосфера</div>
+      <h2 class="s-title">Наш <em>интерьер</em></h2>
+      <div class="gold-line" style="margin:18px auto 0"></div>
+    </section>
+    <section class="gal-body">
+      <div class="gal-grid" id="galGrid"></div>
+      <div class="gal-cta">
+        <p>Больше фото в нашем Instagram</p>
+        <a href="https://instagram.com/eden.almaty" target="_blank" rel="noopener" class="btn btn-outline">&#128248; @eden.almaty</a>
+      </div>
+    </section>
+    <footer><div class="footer-inner"><div class="footer-bottom"><span>&copy; <span class="copyright-year"></span> Eden</span></div></div></footer>
+  </div>
+
+  <!-- ========== EVENTS ========== -->
+  <div id="page-events" class="page">
+    <section class="events-header">
+      <div class="s-eye">Мероприятия</div>
+      <h2 class="s-title">Проведите <em>событие</em></h2>
+      <div class="gold-line" style="margin:18px auto 0"></div>
+    </section>
+    <section class="events-body">
+      <div class="events-grid">
+        <article class="ecard fi d1">
+          <div class="ecard-ico" aria-hidden="true">&#127874;</div>
+          <h3 class="ecard-title">День рождения</h3>
+          <p class="ecard-desc">Особый день в уютной атмосфере Eden. Индивидуальное меню и декор.</p>
+          <button class="ecard-cta" onclick="showPage('booking')">Забронировать &rarr;</button>
+        </article>
+        <article class="ecard fi d2">
+          <div class="ecard-ico" aria-hidden="true">&#128188;</div>
+          <h3 class="ecard-title">Корпоративы</h3>
+          <p class="ecard-desc">VIP залы до 15 человек для деловых встреч и мероприятий.</p>
+          <button class="ecard-cta" onclick="showPage('booking')">Подробности &rarr;</button>
+        </article>
+        <article class="ecard fi d3">
+          <div class="ecard-ico" aria-hidden="true">&#128141;</div>
+          <h3 class="ecard-title">Банкеты</h3>
+          <p class="ecard-desc">Свадьбы и юбилеи &mdash; Eden вмещает до 600 гостей.</p>
+          <button class="ecard-cta" onclick="window.open('https://wa.me/77079457887?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%B1%D0%B0%D0%BD%D0%BA%D0%B5%D1%82/%D1%81%D0%B2%D0%B0%D0%B4%D1%8C%D0%B1%D1%83','_blank')">Обсудить &rarr;</button>
+        </article>
+      </div>
+      <div class="events-cta fi">
+        <h3>Хотите провести <em style="color:var(--gold-d)">мероприятие?</em></h3>
+        <p style="color:var(--muted)">Свяжитесь с нами &mdash; организуем незабываемый вечер</p>
+        <a href="tel:+77079457887" class="events-tel">+7 (707) 945-78-87</a>
+        <div class="events-social">
+          <a href="https://wa.me/77079457887?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%B7%D0%B0%D0%BB%20%D0%B4%D0%BB%D1%8F%20%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D1%8F" target="_blank" rel="noopener" class="social-btn whatsapp-btn">&#128172; WhatsApp</a>
+          <a href="https://t.me/+77079457887" target="_blank" rel="noopener" class="social-btn telegram-btn">&#9993; Telegram</a>
+        </div>
+      </div>
+    </section>
+    <footer><div class="footer-inner"><div class="footer-bottom"><span>&copy; <span class="copyright-year"></span> Eden</span></div></div></footer>
+  </div>
+
+  <!-- ADMIN LOGIN -->
+  <div class="admin-login-overlay" id="adminLoginOverlay">
+    <div class="admin-login-box">
+      <div class="admin-login-icon">&#128274;</div>
+      <h3>Вход в админ-панель</h3>
+      <p>Введите PIN-код для доступа</p>
+      <div class="admin-login-inputs" id="pinInputs">
+        <input type="password" maxlength="1" class="pin-input" data-idx="0" inputmode="numeric" pattern="[0-9]" autocomplete="off">
+        <input type="password" maxlength="1" class="pin-input" data-idx="1" inputmode="numeric" pattern="[0-9]" autocomplete="off">
+        <input type="password" maxlength="1" class="pin-input" data-idx="2" inputmode="numeric" pattern="[0-9]" autocomplete="off">
+        <input type="password" maxlength="1" class="pin-input" data-idx="3" inputmode="numeric" pattern="[0-9]" autocomplete="off">
+      </div>
+      <div class="admin-login-error" id="pinError"></div>
+      <button class="btn btn-gold" style="width:100%;text-align:center;margin-top:12px" onclick="submitPin()">Войти</button>
+      <button class="btn btn-outline" style="width:100%;text-align:center;margin-top:8px" onclick="closeAdminLogin()">Отмена</button>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div class="admin-overlay" id="adminOverlay">
+    <div class="admin-panel">
+      <div class="admin-header">
+        <h3>&#128736; Админ-панель EDEN</h3>
+        <div class="admin-header-right">
+          <button class="admin-logout-btn" onclick="adminLogout()" title="Выйти">&#10140;</button>
+          <button onclick="closeAdmin()" aria-label="Закрыть">&times;</button>
+        </div>
+      </div>
+      <div class="admin-tabs">
+        <button class="admin-tab on" onclick="switchAdminTab('bookings',this)">Бронирования</button>
+        <button class="admin-tab" onclick="switchAdminTab('orders',this)">Заказы</button>
+        <button class="admin-tab" onclick="switchAdminTab('menu',this)">Меню</button>
+        <button class="admin-tab" onclick="switchAdminTab('gallery',this)">Галерея</button>
+        <button class="admin-tab" onclick="switchAdminTab('content',this)">Контент</button>
+        <button class="admin-tab" onclick="switchAdminTab('reviews',this)">Отзывы</button>
+        <button class="admin-tab" onclick="switchAdminTab('stats',this)">Статистика</button>
+      </div>
+      <div class="admin-body" id="adminBody"></div>
+    </div>
+  </div>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
