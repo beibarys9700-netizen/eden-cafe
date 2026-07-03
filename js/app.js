@@ -25,7 +25,7 @@ function showPage(id){
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.dataset&&a.dataset.page===id));
   window.scrollTo({top:0,behavior:'smooth'});
   setTimeout(initAnim,80);
-  if(id==='booking'){drawPlan();updateMyBookings();}
+  if(id==='booking'){drawPlan();updateMyBookings();populateTableSelect();}
   if(id==='menu')filterMenu('all',document.querySelector('.mcat'));
   if(id==='home')renderPopular();
 }
@@ -336,19 +336,48 @@ function updateCartUI(){
 }
 
 // ========== ORDER ==========
+function toggleTableSelect(){
+  const type=document.querySelector('input[name="orderType"]:checked').value;
+  const wrap=document.getElementById('tableSelectWrap');
+  if(wrap)wrap.style.display=type==='here'?'block':'none';
+}
+
+function populateTableSelect(){
+  const sel=document.getElementById('orderTableSelect');
+  if(!sel)return;
+  sel.innerHTML='<option value="">Выберите столик</option>';
+  FLOORS[cf].tables.forEach(t=>{
+    const booked=bookings.some(b=>b.floor===cf&&b.tableId===t.id);
+    if(!booked){
+      const label=t.name||('№'+t.id+' ('+t.s+' мест)');
+      sel.innerHTML+='<option value="'+t.id+'">'+label+'</option>';
+    }
+  });
+}
+
 function submitOrder(){
   if(cart.length===0){showToast('Корзина пуста');return;}
   const orderType=document.querySelector('input[name="orderType"]:checked').value;
   const total=cart.reduce((s,c)=>s+c.price*c.qty,0);
 
   const order={type:orderType,items:[...cart],total};
+  if(orderType==='here'){
+    const tableVal=document.getElementById('orderTableSelect')?.value;
+    if(!tableVal){showToast('Выберите столик');return;}
+    order.tableId=parseInt(tableVal);
+    order.floor=cf;
+    const fd=FLOORS[cf];
+    const table=fd.tables.find(t=>t.id===order.tableId);
+    order.tableLabel=table?(table.name||('№'+table.id)):'';
+  }
 
   fetch(API_BASE+'/api/orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(order)})
     .then(r=>r.json())
     .then(data=>{
       if(!data.ok){showToast('Ошибка заказа');return;}
       document.getElementById('orderNum').textContent=data.order.id;
-      document.getElementById('orderTypeLabel').textContent=orderType==='here'?'Заказ в зале':'Заказ с собой';
+      const tableInfo=order.tableLabel?' — '+order.tableLabel:'';
+      document.getElementById('orderTypeLabel').textContent=orderType==='here'?'Заказ в зале'+tableInfo:'Заказ с собой';
       document.getElementById('orderStep3').textContent=orderType==='here'?'Ожидайте в зале — официант принесёт ваш заказ':'Заберите заказ на выносе у стойки';
       const modal=document.getElementById('orderModal');
       modal.style.display='flex';
@@ -384,22 +413,22 @@ const FLOORS={
     {t:'window',x:0,y:0,w:700,h:10},{t:'lake',x:310,y:200,rx:55,ry:32,label:'Озеро'},{t:'stairs',x:345,y:250,w:88,h:44,label:'Лестница'},
     {t:'bar',x:0,y:340,w:195,h:72,label:'Бар'},{t:'entrance',x:580,y:340,w:108,h:72,label:'Вход'},
   ],tables:[
-    {id:1,x:22,y:22,w:62,h:40,s:4,b:false},{id:2,x:98,y:22,w:62,h:40,s:4,b:true},{id:3,x:174,y:22,w:62,h:40,s:4,b:false},
-    {id:4,x:438,y:22,w:62,h:40,s:4,b:false},{id:5,x:514,y:22,w:62,h:40,s:4,b:true},{id:6,x:590,y:22,w:62,h:40,s:4,b:false},
-    {id:7,x:22,y:88,w:62,h:40,s:4,b:false},{id:8,x:98,y:88,w:62,h:40,s:4,b:false},{id:9,x:174,y:88,w:62,h:40,s:4,b:true},
+    {id:1,x:22,y:22,w:62,h:40,s:4,b:false},{id:2,x:98,y:22,w:62,h:40,s:4,b:false},{id:3,x:174,y:22,w:62,h:40,s:4,b:false},
+    {id:4,x:438,y:22,w:62,h:40,s:4,b:false},{id:5,x:514,y:22,w:62,h:40,s:4,b:false},{id:6,x:590,y:22,w:62,h:40,s:4,b:false},
+    {id:7,x:22,y:88,w:62,h:40,s:4,b:false},{id:8,x:98,y:88,w:62,h:40,s:4,b:false},{id:9,x:174,y:88,w:62,h:40,s:4,b:false},
     {id:10,x:438,y:88,w:62,h:40,s:4,b:false},{id:11,x:514,y:88,w:62,h:40,s:4,b:false},{id:12,x:590,y:88,w:62,h:40,s:2,b:false},
-    {id:13,x:22,y:155,w:58,h:40,s:4,b:false},{id:14,x:94,y:155,w:58,h:40,s:4,b:true},
+    {id:13,x:22,y:155,w:58,h:40,s:4,b:false},{id:14,x:94,y:155,w:58,h:40,s:4,b:false},
     {id:15,x:438,y:155,w:62,h:40,s:4,b:false},{id:16,x:514,y:155,w:62,h:40,s:4,b:false},{id:17,x:590,y:155,w:62,h:40,s:2,b:false},
   ]},
   2:{w:700,h:340,features:[
     {t:'balcony',x:0,y:0,w:700,h:10},{t:'stairs',x:574,y:255,w:100,h:80,label:'На 1 этаж'},{t:'vip',x:0,y:215,w:155,h:80,label:'→ VIP залы'},
   ],tables:[
-    {id:1,x:28,y:26,w:68,h:46,s:6,b:false},{id:2,x:112,y:26,w:68,h:46,s:6,b:true},{id:3,x:196,y:26,w:68,h:46,s:6,b:false},
-    {id:4,x:280,y:26,w:68,h:46,s:6,b:false},{id:5,x:364,y:26,w:68,h:46,s:6,b:true},{id:6,x:448,y:26,w:68,h:46,s:6,b:false},
-    {id:7,x:28,y:105,w:62,h:40,s:4,b:false},{id:8,x:106,y:105,w:62,h:40,s:4,b:false},{id:9,x:184,y:105,w:62,h:40,s:4,b:true},{id:10,x:262,y:105,w:62,h:40,s:4,b:false},
+    {id:1,x:28,y:26,w:68,h:46,s:6,b:false},{id:2,x:112,y:26,w:68,h:46,s:6,b:false},{id:3,x:196,y:26,w:68,h:46,s:6,b:false},
+    {id:4,x:280,y:26,w:68,h:46,s:6,b:false},{id:5,x:364,y:26,w:68,h:46,s:6,b:false},{id:6,x:448,y:26,w:68,h:46,s:6,b:false},
+    {id:7,x:28,y:105,w:62,h:40,s:4,b:false},{id:8,x:106,y:105,w:62,h:40,s:4,b:false},{id:9,x:184,y:105,w:62,h:40,s:4,b:false},{id:10,x:262,y:105,w:62,h:40,s:4,b:false},
   ]},
   3:{w:700,h:420,features:[],tables:[
-    {id:1,x:18,y:18,w:318,h:175,s:15,b:false,name:'VIP «Арабика»'},{id:2,x:364,y:18,w:318,h:175,s:15,b:true,name:'VIP «Эмир»'},
+    {id:1,x:18,y:18,w:318,h:175,s:15,b:false,name:'VIP «Арабика»'},{id:2,x:364,y:18,w:318,h:175,s:15,b:false,name:'VIP «Эмир»'},
     {id:3,x:18,y:212,w:318,h:160,s:12,b:false,name:'VIP «Жасмин»'},{id:4,x:364,y:212,w:318,h:160,s:10,b:false,name:'VIP «Сафари»'},
     {id:5,x:175,y:387,w:350,h:24,s:15,b:false,name:'VIP «Восток»'},
   ]}
@@ -858,10 +887,11 @@ function renderAdmin(){
         <div class="admin-stat"><div class="admin-stat-num">${ords.filter(o=>o.type==='here').length}</div><div class="admin-stat-lbl">В зале</div></div>
       </div>
       <div class="admin-table-wrap"><table class="admin-table">
-        <thead><tr><th>Номер</th><th>Тип</th><th>Состав</th><th>Сумма</th><th>Время</th></tr></thead>
+        <thead><tr><th>Номер</th><th>Тип</th><th>Стол</th><th>Состав</th><th>Сумма</th><th>Время</th></tr></thead>
         <tbody>${ords.map(o=>`<tr>
           <td><strong style="color:var(--gold-d)">${o.id}</strong></td>
           <td><span class="admin-badge ${o.type==='here'?'booked':'preparing'}">${o.type==='here'?'В зале':'С собой'}</span></td>
+          <td>${o.type==='here'?(o.tableLabel||'Стол №'+o.tableId||'-'):'-'}</td>
           <td>${o.items.map(i=>i.name+' x'+i.qty).join(', ')}</td>
           <td><strong>${formatPrice(o.total)} тг</strong></td>
           <td>${new Date(o.date).toLocaleString('ru')}</td>
@@ -1478,6 +1508,23 @@ function renderReviewsOnHome(){
   setTimeout(initAnim,100);
 }
 
+// ========== REAL-TIME BOOKING SYNC ==========
+let bookingPollInterval=null;
+function startBookingPoll(){
+  if(bookingPollInterval)return;
+  bookingPollInterval=setInterval(async()=>{
+    try{
+      const r=await fetch(API_BASE+'/api/bookings');
+      const data=await r.json();
+      if(data.ok){
+        const prev=JSON.stringify(bookings);
+        bookings=data.bookings;
+        if(JSON.stringify(bookings)!==prev){drawPlan();updateMyBookings();populateTableSelect();}
+      }
+    }catch(e){}
+  },15000);
+}
+
 // ========== INIT ==========
 document.addEventListener('DOMContentLoaded',async()=>{
   const savedMenu=localStorage.getItem('eden_menu_custom');
@@ -1492,6 +1539,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
   updateCartUI();
   updateMyBookings();
   renderPopular();
+  startBookingPoll();
   if(typeof ymaps==='undefined')loadYandexMaps();else initMap();
   setTimeout(initAnim,200);
 });

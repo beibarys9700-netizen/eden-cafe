@@ -359,8 +359,13 @@
         <span id="cartTotal">0 тг</span>
       </div>
       <div class="cart-order-type">
-        <label><input type="radio" name="orderType" value="here" checked> В зале</label>
-        <label><input type="radio" name="orderType" value="takeaway"> С собой</label>
+        <label><input type="radio" name="orderType" value="here" checked onchange="toggleTableSelect()"> В зале</label>
+        <label><input type="radio" name="orderType" value="takeaway" onchange="toggleTableSelect()"> С собой</label>
+      </div>
+      <div id="tableSelectWrap" style="margin-top:6px">
+        <select id="orderTableSelect" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--card);font-size:13px">
+          <option value="">Выберите столик</option>
+        </select>
       </div>
       <button class="btn btn-gold" style="width:100%;text-align:center" onclick="submitOrder()">Оформить заказ</button>
       <button class="btn btn-outline" style="width:100%;text-align:center;margin-top:6px" onclick="clearCart()">Очистить</button>
