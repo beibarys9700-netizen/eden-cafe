@@ -45,15 +45,6 @@
 </head>
 <body>
 
-  <!-- Hidden SVG for wave clips -->
-  <svg style="position:absolute;width:0;height:0" aria-hidden="true">
-    <defs>
-      <clipPath id="waveClip" clipPathUnits="objectBoundingBox">
-        <path d="M0,0 L1,0 L1,0.3 C0.8,0.6 0.2,0.8 0,0.5 Z"/>
-      </clipPath>
-    </defs>
-  </svg>
-
   <!-- NAV -->
   <nav id="nav" aria-label="Основная навигация">
     <span class="nav-logo" onclick="showPage('home')" role="button" tabindex="0" aria-label="EDEN — Главная">EDEN</span>
@@ -113,11 +104,6 @@
       </div>
     </section>
 
-    <!-- Smooth wave transition -->
-    <svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" style="margin-top:-2px">
-      <path d="M0,0 C360,50 1080,10 1440,40 L1440,60 L0,60 Z" fill="#FAF7F2"/>
-    </svg>
-
     <section class="hours-bar" aria-label="Часы работы">
       <div class="hours-inner">
         <div class="hi"><div class="hi-day">Пн&mdash;Чт, Вс</div><div class="hi-time">09:00&mdash;23:00</div></div>
@@ -130,11 +116,6 @@
       </div>
     </section>
 
-    <!-- Smooth wave to stats -->
-    <svg class="wave-divider" viewBox="0 0 1440 50" preserveAspectRatio="none">
-      <path d="M0,0 C480,40 960,0 1440,30 L1440,50 L0,50 Z" fill="#FAF7F2"/>
-    </svg>
-
     <section class="home-stats" aria-label="Статистика">
       <div class="stats-grid">
         <div class="stat-box fi d1"><div class="stat-num">600</div><div class="stat-lbl">Мест</div></div>
@@ -143,11 +124,6 @@
         <div class="stat-box fi d4"><div class="stat-num">100%</div><div class="stat-lbl">Halal</div></div>
       </div>
     </section>
-
-    <!-- Smooth wave to popular -->
-    <svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none">
-      <path d="M0,50 C360,10 1080,50 1440,20 L1440,60 L0,60 Z" fill="#F5F0E8"/>
-    </svg>
 
     <!-- POPULAR DISHES -->
     <section class="popular-section" aria-label="Популярные блюда">
@@ -166,11 +142,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Smooth wave to preview -->
-    <svg class="wave-divider" viewBox="0 0 1440 50" preserveAspectRatio="none">
-      <path d="M0,30 C480,0 960,40 1440,10 L1440,50 L0,50 Z" fill="#FAF7F2"/>
-    </svg>
 
     <section class="home-preview" aria-label="Превью">
       <div class="preview-grid">
@@ -201,11 +172,6 @@
       </div>
     </section>
 
-    <!-- Smooth wave to reviews -->
-    <svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none">
-      <path d="M0,20 C360,50 1080,10 1440,40 L1440,60 L0,60 Z" fill="#F5F0E8"/>
-    </svg>
-
     <section class="reviews-section" aria-label="Отзывы гостей">
       <div class="reviews-inner">
         <div class="s-eye fi">Отзывы гостей</div>
@@ -215,9 +181,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Smooth transition to footer -->
-    <div style="height:1px;background:linear-gradient(90deg,transparent,var(--gold-l),transparent);opacity:.15;margin:0"></div>
 
     <footer>
       <div class="footer-inner">
