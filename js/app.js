@@ -1155,7 +1155,7 @@ async function renderAdminGalleryTab(){
 async function uploadGalleryPhoto(e){
   const file=e.target.files[0];
   if(!file)return;
-  if(file.size>5*1024*1024){showToast('Фото слишком большое (макс 5 МБ)');return;}
+  if(file.size>10*1024*1024){showToast('Фото слишком большое (макс 10 МБ)');return;}
   const formData=new FormData();
   formData.append('photo',file);
   formData.append('label','');
@@ -1401,7 +1401,7 @@ async function deleteReview(id){
 function handleAdminPhoto(e){
   const file=e.target.files[0];
   if(!file)return;
-  if(file.size>2*1024*1024){showToast('Фото слишком большое (макс 2 МБ)');return;}
+  if(file.size>10*1024*1024){showToast('Фото слишком большое (макс 10 МБ)');return;}
   const reader=new FileReader();
   reader.onload=function(ev){
     const menu=JSON.parse(localStorage.getItem('eden_menu_custom')||'null')||[...MENU];
